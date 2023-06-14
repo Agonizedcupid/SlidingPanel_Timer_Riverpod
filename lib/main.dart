@@ -4,6 +4,7 @@ import 'package:sliding_panel/GlobalProviders.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import 'CustomCircularTimer.dart';
+import 'LinearTimer.dart';
 import 'TimerWidget.dart';
 
 void main() {
@@ -38,7 +39,7 @@ class HomePage extends ConsumerWidget {
       ),
       body: SlidingUpPanel(
         panel: const ExpandedWidget(),  // Expanded view
-        collapsed: const CollapsedWidget(),  // Collapsed view
+        collapsed: const LinearWidgetDemo(),  // Collapsed view
         body: Center(  // Add this center widget
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -122,42 +123,43 @@ class _ExpandedWidgetState extends ConsumerState<ExpandedWidget> {
   }
 }
 
-class CollapsedWidget extends ConsumerStatefulWidget {
-  const CollapsedWidget({super.key});
+// class CollapsedWidget extends ConsumerStatefulWidget {
+//   const CollapsedWidget({super.key});
+//
+//   @override
+//   ConsumerState<CollapsedWidget> createState() => _CollapsedWidgetState();
+// }
 
-  @override
-  ConsumerState<CollapsedWidget> createState() => _CollapsedWidgetState();
-}
+// class _CollapsedWidgetState extends ConsumerState<CollapsedWidget> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Center(
+//         child: Container(
+//           height: 100,
+//           width: 100,
+//           child: Row(
+//             children: [
+//               CustomCircularTimer(
+//                 durationMinutes: ref.watch(timerProvider),
+//                 textStyle: TextStyle(
+//                   color: Colors.black,
+//                   fontSize: 24,
+//                 ),
+//                 ringColor: Colors.grey,
+//                 fillColor: Colors.black,
+//                 strokeWidth: 10.0,
+//                 onTimerStateChanged: (isCollapsed) {},  // Implement the callback here or pass it from outside
+//               ),
+//             ],
+//           ),
+//
+//         ),
+//       ),
+//     );
+//   }
+// }
 
-class _CollapsedWidgetState extends ConsumerState<CollapsedWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Container(
-          height: 100,
-          width: 100,
-          child: Row(
-            children: [
-              CustomCircularTimer(
-                durationMinutes: ref.watch(timerProvider),
-                textStyle: TextStyle(
-                  color: Colors.black,
-                  fontSize: 24,
-                ),
-                ringColor: Colors.grey,
-                fillColor: Colors.black,
-                strokeWidth: 10.0,
-                onTimerStateChanged: (isCollapsed) {},  // Implement the callback here or pass it from outside
-              ),
-            ],
-          ),
-
-        ),
-      ),
-    );
-  }
-}
 
 
 
